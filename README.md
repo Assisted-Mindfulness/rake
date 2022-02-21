@@ -2,17 +2,13 @@
 
 PHP implementation of Rapid Automatic Keyword Exraction algorithm (RAKE) for extracting multi-word phrases from text.
 
-
-
 ## Installation
-
 
 ```bash
 composer require assisted-mindfulness/rake
 ```
 
 ## Usage
-
 
 ```php
 $rake = new Rake(4, false);
