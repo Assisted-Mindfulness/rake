@@ -31,7 +31,7 @@ class Rake
 
     /**
      * @param $text
-     * @param int $phrase_min_length
+     * @param int  $phrase_min_length
      * @param bool $filter_numerics
      */
     public function __construct(int $phrase_min_length = 0, bool $filter_numerics = true)
@@ -62,8 +62,9 @@ class Rake
      *
      * @param $text
      *
-     * @return $this
      * @throws \JsonException
+     *
+     * @return $this
      */
     public function extract($text)
     {
@@ -121,7 +122,7 @@ class Rake
                 // down the line when a developer attempts to
                 // append arrays to one another and one of them
                 // have a mix of integer and string keys.
-                if (!$this->filter_numerics || ($this->filter_numerics && !is_numeric($word))) {
+                if (! $this->filter_numerics || ($this->filter_numerics && ! is_numeric($word))) {
                     if ($this->min_length === 0 || mb_strlen($word) >= $this->min_length) {
                         $keywords[$word] = $word;
                     }
@@ -196,7 +197,6 @@ class Rake
         $results = collect();
 
         foreach ($sentences as $sentence) {
-
             $phrases = Str::of($sentence)
                 ->lower()
                 ->explode(' ')
@@ -208,7 +208,7 @@ class Rake
                 })
                 ->when($this->filter_numerics, function (Collection $collection) {
                     return $collection->filter(function ($word) {
-                        return !is_numeric($word);
+                        return ! is_numeric($word);
                     });
                 })
                 ->when($this->min_length !== 0, function (Collection $collection) {
@@ -230,8 +230,6 @@ class Rake
             ->filter()
             ->toArray();
     }
-
-
 
     /**
      * Calculate a score for each word.
@@ -310,7 +308,7 @@ class Rake
     private function splitPhraseIntoWords($phrase)
     {
         return array_filter(preg_split('/\W+/u', $phrase, -1, PREG_SPLIT_NO_EMPTY), function ($word) {
-            return !is_numeric($word);
+            return ! is_numeric($word);
         });
     }
 }

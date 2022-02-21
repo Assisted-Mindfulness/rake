@@ -24,8 +24,9 @@ class RakeTest extends TestCase
     }
 
     /**
-     * @return void
      * @throws \JsonException
+     *
+     * @return void
      */
     public function testRussianExtract()
     {
@@ -47,7 +48,6 @@ class RakeTest extends TestCase
             9 => "вынул",
         ]);
     }
-
 
     public function testPhrasesExtract()
     {
@@ -78,7 +78,6 @@ class RakeTest extends TestCase
         //$this->assertContains('upper bounds', $phrases);
     }
 
-
     public function testDonNotFilterNumerics()
     {
         $text = "6462 Little Crest Suite 413 Lake Carlietown, WA 12643";
@@ -93,4 +92,3 @@ class RakeTest extends TestCase
         $this->assertEquals($scores['crest suite 413 lake carlietown'], 16);
     }
 }
-
