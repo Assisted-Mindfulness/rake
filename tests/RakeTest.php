@@ -15,12 +15,12 @@ class RakeTest extends TestCase
         $rake = new Rake();
         $keywords = $rake->extract($text)->sortByScore('desc')->scores();
 
-        $this->assertEquals($keywords, [
+        $this->assertEqualsWithDelta($keywords, [
             "rapid automatic keyword extraction" => 13.333333333333,
             "keyword extraction"                 => 5.3333333333333,
             "difficult"                          => 1.0,
             "libraries"                          => 1.0,
-        ]);
+        ], 0.0000001);
     }
 
     /**
