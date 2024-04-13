@@ -30,7 +30,7 @@ class Rake
     const ORDER_DESC = 'desc';
 
     /**
-     * @param $text
+     * @param      $text
      * @param int  $phrase_min_length
      * @param bool $filter_numerics
      */
